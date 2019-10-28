@@ -1,0 +1,1 @@
+"0","knitr::kable(REco.params$diet, caption = 'Diet parameters for Rocas Atoll Ecosystem', digits=3, drop0trailing = TRUE)"

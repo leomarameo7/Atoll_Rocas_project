@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571936506556.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "49647979",
+    "id" : "6B287DDD",
+    "lastKnownWriteTime" : 1572042189,
+    "last_content_update" : 1572042189752,
+    "path" : "~/Dropbox/Atoll_Rocas_project/Rpath.Rmd",
+    "project_path" : "Rpath.Rmd",
+    "properties" : {
+        "cursorPosition" : "27,17",
+        "scrollLine" : "5"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

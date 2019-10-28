@@ -1,0 +1,16 @@
+"0","#load basic input from my model EwE-  Rocas Atoll"
+"0","diet_matrix <- read.csv(""~/Desktop/diet_matrix_atoll_rocas.csv"")"
+"0","#remove lines 30 and 31"
+"0","diet_matrix<- diet_matrix[c(-30,-31),]"
+"0","#Convert columns X3,X5 and X6 class as numeric"
+"0","diet_matrix$X3<- as.numeric(paste(diet_matrix$X3))"
+"0","diet_matrix$X5<- as.numeric(paste(diet_matrix$X5))"
+"0","diet_matrix$X6<- as.numeric(paste(diet_matrix$X6))"
+"0","View(diet_matrix)"
+"0",""
+"0","#diet sea birds"
+"0","seabirds.diet<-diet_matrix$X1"
+"0","REco.params$diet[, ""Seabirds"" := seabirds.diet]"
+"2","Error in `:=`(""Seabirds"", seabirds.diet) : 
+  Check that is.data.table(DT) == TRUE. Otherwise, := and `:=`(...) are defined for use in j, once only and in particular ways. See help("":="").
+"

@@ -1,0 +1,57 @@
+---
+title: |  
+    | Sea Warming transforms tropical reef food web   
+author: |
+  Leonardo Capitani ^[Corresponding author: leonardocapitani@icloud.com] $^1$, Ronaldo Angelini $^2$, Julio Neves de Araujo $^3$, Guilherme Ortigara Longo $^4$  
+  $^1$Department of Ecology, Universidade Federal do Rio Grande do Norte, Natal, RN 59098-970, Brazil, $^2$Department of Civil Engineering, Universidade Federal do Rio Grande do Norte, Natal, RN, 59078-970, Brazil, $^3$Department of Ecology and Natural Resources,Universidade Federal do Espirito Santo,  Vitória, Espírito Santo 29075-910, Brazil, $^4$Department of Oceanography and Limnology,Universidade Federal do Rio Grande do Norte, Natal, RN, 59014-002, Brazil<br><br>
+
+abstract: |
+  This is the abstract.
+  
+output: 
+  pdf_document:
+    latex_engine: xelatex
+    number_sections: yes
+fig_caption: FALSE
+fontsize: 12pt
+mainfont: Times New Roman      
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#For table and figure captions. Retrieved from https://datascienceplus.com/r-markdown-how-to-number-and-reference-tables/
+
+table_captions <- captioner::captioner(prefix="Tab.")
+figure_captions <- captioner::captioner(prefix="Fig.")
+
+t.ref <- function(x){
+  stringr::str_extract(table_captions(x), "[^:]*")
+}
+
+f.ref <- function(x){
+  stringr::str_extract(figure_captions(x), "[^:]*")
+}
+
+```
+\newpage
+
+# Introduction
+
+The objective of our study was to explore the potential future effects of sea warming on the pristine reef ecosystem of the Rocas Atoll, using a food web model reflecting the 2012 year situation. The model was fitted to the best obtainable biomass time series (2012-2018) for the modelled area and it was parameterized with thermal tolerances for the species. The impact of sea warming was tested using future rising temperature under IPCC Representative Concentration Pathways (RCPs) scenarios for the modelled area. Biomass' simulations outputs were presented for several reef fish species which are identified as ecosystem keystone species (reef sharks and generalist predators) and other important compartments from different trophic guild.
+
+# Results  
+
+The Rocas Atoll's food web (`r f.ref("Fig. 1")`) shows different groups’ trophic levels (TL): top predators are (in order): reef sharks, as _Negaprion brevirostris_ (TL=3.56), _Ginglymostoma cirratum_ (TL=3.47), sea birds (TL = 3.46) and generalist predator fish such as _Lutjanus jocu_ (TL=3.27) and  _Cephalopholis fulva_ (TL=3.28). Other groups such as microinvertrebrates and macroinvertebrates, polychaetes, amphipods, small crabs and even cryptobenthic reef fish occupied the first consumer level with trophic level between 2 and 2.2. Additionally, _Acanthurus chirurgus_, the most abundant herbivore fish at the ecosystem, has the lower trophic level (TL = 2.1). Algae (_Digenea simplex_ and algae turf) accounted for the largest proportion of total living biomass in the system (93%). Fish biomass was composed mainly by herbivore-detritivore trophic guild (53%), followed by invertivore (20%), generalist predators (18.5%) and reef sharks (8.5%). 
+
+```{r, chunk_creating_figure1_captions_and_name, echo=FALSE}
+fig.1_cap <- figure_captions(name = "Fig_1", 
+            caption = "Diagram of the food web and trophic flows of the Rocas Atoll ecosystem (year 2012). Each functional group is shown as a square and its size is proportional to the log of its biomass. The functional groups are represented by their trophic levels (y-axis) and linked by predator-prey relationships showed as coloured lines representing the relative prey’s contribution in the predator’s diet (red: >85%, orange: >75%, yellow:>50%, green: >25%, light blue:> 5%)")
+```
+
+`r figure_captions("Fig_1")`
+
+```{r chunk_creating_figure1, echo=FALSE, fig.cap=fig.1_cap}
+knitr::include_graphics('outputs_results/figures/Fig. 1.png')
+```
+

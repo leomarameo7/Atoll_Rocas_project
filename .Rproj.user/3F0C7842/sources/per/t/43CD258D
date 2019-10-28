@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1572042139587.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1064330300",
+    "id" : "43CD258D",
+    "lastKnownWriteTime" : 1571936388,
+    "last_content_update" : 1571936388,
+    "path" : "~/Dropbox/Atoll_Rocas_project/Template_for_paper_Rocas_Atoll_Ecosystem.Rmd",
+    "project_path" : "Template_for_paper_Rocas_Atoll_Ecosystem.Rmd",
+    "properties" : {
+        "cursorPosition" : "1,15",
+        "docOutlineVisible" : "0",
+        "last_setup_crc32" : "",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
