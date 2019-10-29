@@ -39,6 +39,8 @@ median_statusquo$species <- factor(median_statusquo$species,
                                             "Holocentrus adscensionis",
                                             "Haemulidae", "Cryptobenthic reef fishes"))
 
+
+
 ##### boxplot for the 2100 year and fish species ####
 
 p <- ggplot(d, aes(x = scenario, y = biomass, fill = scenario, facets = species)) + 
@@ -65,7 +67,7 @@ p <- ggplot(d, aes(x = scenario, y = biomass, fill = scenario, facets = species)
 
 
 #Before to run the code below, remember to run the function contained in the script "function_modify_facet_scale" 
-p +
+p<- p +
    facet_wrap_custom(~species, scales = "free_y", ncol = 4,nrow = 4, scale_overrides = list(
       scale_override(1, scale_y_continuous(limits  = c(0, 0.60), breaks = seq(0,.60,0.15))),
       scale_override(2, scale_y_continuous(limits  = c(0, 12), breaks = seq(0,12,1))),
@@ -81,28 +83,3 @@ p +
 
 ggsave(filename = "boxplot_fish_2100", plot = p, path = "outputs_results/figures/",
        width = 18, device = "png", height = 13, units = 'in', dpi = 400)
-
-####Subset and plot for each species####
-newdata <- subset(d,species == "Mulloidichthys martinicus")
-
-mullo <- ggplot(newdata, aes(x= scenario, y= biomass, fill=scenario)) + 
-   geom_boxplot(aes(x= as.factor(scenario), y= as.numeric(biomass), fill=scenario),
-                width=0.35, fatten = 2.5,  notch = TRUE, alpha=0.75, outlier.shape =NA) +
-   geom_hline(data = newdata, aes(yintercept=newdata[1]), colour="red", lty="longdash", lwd=0.5) +
-   theme_bw() + 
-   labs(x = NULL, y = expression(Biomass~""~(g~m^{-2}))) +
-   theme(legend.position = "none",
-         strip.text.x = element_text(size = 10, color = "black", face = "bold.italic"),
-         axis.text.x = element_text(size = 10,  color = "black"),
-         axis.text.y  = element_text(size = 10,  color = "black"),
-         axis.title.y = element_text(size = 14),
-         panel.border = element_blank(),
-         panel.background = element_blank(),
-         panel.grid.major = element_blank(), 
-         panel.grid.minor = element_blank(),
-         axis.line = element_line(colour = "black")) +
-   scale_fill_brewer(palette="RdBu",direction = -1)+
-   scale_y_continuous(position = "left", limits=c(0.5,3), breaks=seq(.5,3,0.25))
-mullo
-
-

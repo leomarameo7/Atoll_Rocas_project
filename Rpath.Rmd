@@ -1,29 +1,8 @@
 ---
 title: "Rpath for Rocas Atoll Ecosystem"
-author: "Leonardo Capitani"
-author:
-  - name: Leonardo Capitani
-    email: leonardocapitani@icloud.com
-    affiliation: Department of Ecology, Universidade Federal do Rio Grande do Norte
-    footnote: Corresponding Author
-  - name: Ronaldo Angelini
-    email: ronangelini@gmail.com
-    affiliation: Department of Civil Engineering, Universidade Federal do Rio Grande do Norte
-- name: Julio Neves de Araujo
-    email: julioaneves@hotmail.com
-    affiliation: Department of , Universidade Federal do Espirito Santo
-address:
-  - code: Some Institute of Technology
-    address: Department, Street, City, State, Zip
-  - code: Another University
-    address: Department, Street, City, State, Zip
-
+author: Leonardo Capitani
 output:
   pdf_document: default
-  html_document:
-    df_print: paged
-  word_document: default
-toc: yes 
 number_sections: true
 linenumbers: true
 ---
@@ -83,7 +62,7 @@ groups <- c('Seabirds', "Negaprion brevirostris",
       "Benthic macroinvertebrates", "Benthic microinvertebrates", 
       "Siderastrea stellata","Zooplankton","Phytoplankton","Digenea simplex","Other algal turf", "Detritus", "fleets")
 
-types  <- c(rep(0, 22), 0.8, 0, rep(1, 3), 2, 3)
+types  <- c(rep(0, 22), 0.9, 0, rep(1, 3), 2, 3)
 
 REco.params <- create.rpath.params(group = groups, 
             type = types, stgroup = NA)
@@ -213,7 +192,7 @@ REco.params$diet[,"Benthic microinvertebrates":= Benthic_microinvertebrates.diet
 #diet Siderastrea stellata
 Siderastrea_stellata.diet <- c(0, 0, 0, 0, 0, 0, 0, 0,
                                0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 
-                               0, 0.40, 0, 0, 0, 0, 0) 
+                               0, 1, 0, 0, 0, 0, 0) 
 
 REco.params$diet[,"Siderastrea stellata" := Siderastrea_stellata.diet]
 
@@ -223,7 +202,7 @@ REco.params$diet[,"Zooplankton" := Zooplankton.diet]
 View(REco.params$diet)
 ```
 
-```{r Dietfile Table, echo = F}
+```{r Dietfile Table, echo=, message=FALSE, warning=FALSE, paged.print=FALSE}
 knitr::kable(REco.params$diet, caption = 'Diet parameters for Rocas Atoll Ecosystem', 
              digits = 3, drop0trailing = TRUE)
 ```
@@ -244,12 +223,14 @@ are a list of parameters from the mass balance.  However, the `print` function w
 display the same information as the "Basic Estimates" tab from EwE. You will also 
 notice that the `print` function will display whether the model is balanced or not.
 If the model was not balanced, it would list the groups that are not balanced.
-
+Rpath has the same constraint that all DC's should equal one. Rpath only gives errors if you run the `check.rpath.params()` function.
 You can also display the mortalities associated with each group by supplying the
 argument `morts = T` to the `print` function.
 
 ```{r Ecopath morts}
 print(REco, morts = T)
+check.rpath.params(REco.params)
+
 ```
 
 Note that if you wish to save the `print` output you need to use the function
