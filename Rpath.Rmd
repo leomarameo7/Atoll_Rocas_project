@@ -7,19 +7,7 @@ number_sections: true
 linenumbers: true
 ---
 
-Rpath is an implementation of the ecosystem model Ecopath with Ecosim (EwE; 
-Christensen and Pauly 1992^[Christensen and Pauly. 1992. ECOPATH II - a software
-for balancing steady-state models and calculating network characteristics. 
-Ecological Modelling 61:169-85], Walters et al. 1997^[Walters et al. 1997. 
-Structuring dynamic models of exploited ecosystems from trophic mass-balance 
-assessments. Reviews of Fish Biology and Fisheries 7:1-34]).  This vignette 
-describes some of the basic functionality of the package using a fictional 
-ecosystem, R Ecosystem.  Any resemblance to an actual ecosystem is purely 
-coincidental.  To see the underlying mathematics please refer to Lucey et al. 
-(in prep^[Lucey et al. in prep. Improving the EBFM toolbox with an alternative 
-open source version of Ecopath with Ecosim]).
-
-```{r rpath load, echo = F}
+```{r rpath load, echo = F, warning=FALSE}
 knitr::opts_chunk$set(
   comment = '#>',
   collapse = T)
@@ -31,25 +19,9 @@ library(readr)
 ## Setting up Ecopath
 
 ### Parameter file generation
-Unlike the GUI based EwE software package, Rpath relies on a parameter input file.
-This file is actually a list of several different parameter files: model, diet, 
-stanzas, and pedigree.  Parameter files can be created outside of R and read in using
-the `read.rpath.params` function.  This function will merge several different flat
-files into an R object of the list type.  A preferred alternative is to generate 
-the list file and populate it completely within R.  The function 
-`create.rpath.params` will generate an Rpath.param.  This ensures that all 
-of the correct columns are present in the parameter file.
-
-The parameter file contains all of the information you would normally enter in the
-input data tabs in EwE.  There are 2 necessary pieces of information to generate
-the parameter file: the group names and their corresponding type.  The types are:
-living = 0, primary producer = 1, detritus = 2, and fleet = 3.  If your model 
-contains multi-stanza groups then you need 2 additional pieces of information: 
-stanza group names (include NA for those groups not in a stanza) and the number of
-stanzas per stanza group.
 
 ```{r groups}
-#Groups and types for the R Ecosystem
+#Groups and types for the Rocas Atoll Ecosystem
 
 groups <- c('Seabirds', "Negaprion brevirostris",
       "Ginglymostoma cirratum","Lutjanus jocu", 
@@ -62,7 +34,7 @@ groups <- c('Seabirds', "Negaprion brevirostris",
       "Benthic macroinvertebrates", "Benthic microinvertebrates", 
       "Siderastrea stellata","Zooplankton","Phytoplankton","Digenea simplex","Other algal turf", "Detritus", "fleets")
 
-types  <- c(rep(0, 22), 0.9, 0, rep(1, 3), 2, 3)
+types  <- c(rep(0, 22), 0.8, 0, rep(1, 3), 2, 3)
 
 REco.params <- create.rpath.params(group = groups, 
             type = types, stgroup = NA)
@@ -81,8 +53,7 @@ REco.params$model[, PB := pb]
 qb <- c(76.5, 3.2, 3.1, 5.5, 6.7, 11.3, 10.9, 14.7, 14.1, 11.2, 6.2, 10, 27.5, 9.6,8.3, 11.6, 25.1, 2.35, 36.5, 7.4, 10, 16.69, 9.4, 160,NA,NA,NA,NA,NA)
 REco.params$model[, QB := qb]
 
-ba<- c(0, 0, 0.558, -0.1378252, 0.1081793, 0.9327999, -0.08161397, -0.005367057,            0.004389316, 0.0818163, 0.2839955, 0.1026, 0, 0.4368, 0.9002874, 0.08392983,
-       -0.1343, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0)
+ba <- c(0, 0, 0.558, -0.1378252, 0.1081793, 0.9327999, -0.08161397, -0.005367057, 0.004389316, 0.0818163, 0.2839955, 0.1026, 0, 0.4368, 0.9002874, 0.08392983, -0.1343, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0)
 REco.params$model[, BioAcc  := ba]
 #Set parameters for Unassimilation
 REco.params$model[, Unassim := c(rep(0.2, 20), 0.4,0.4, 0.2,0.4, 0, 0, 0, 0,0)]

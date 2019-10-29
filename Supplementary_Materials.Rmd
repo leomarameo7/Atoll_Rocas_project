@@ -1,0 +1,37 @@
+---
+title: |  
+    | Sea Warming transforms tropical reef food web   
+author: |
+  Leonardo Capitani ^[Corresponding author: leonardocapitani@icloud.com] $^1$, Ronaldo Angelini $^2$, Julio Neves de Araujo $^3$, Guilherme Ortigara Longo $^4$  
+  $^1$Department of Ecology, Universidade Federal do Rio Grande do Norte, Natal, RN 59098-970, Brazil, $^2$Department of Civil Engineering, Universidade Federal do Rio Grande do Norte, Natal, RN, 59078-970, Brazil, $^3$Department of Ecology and Natural Resources,Universidade Federal do Espirito Santo,  Vitória, Espírito Santo 29075-910, Brazil, $^4$Department of Oceanography and Limnology,Universidade Federal do Rio Grande do Norte, Natal, RN, 59014-002, Brazil<br><br>
+output: 
+  pdf_document:
+    latex_engine: xelatex
+    number_sections: yes
+fig_caption: FALSE
+fontsize: 12pt
+mainfont: Times New Roman
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+```
+
+# Supplementary Methods
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+
+```{r Supplementary Table S1., }
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

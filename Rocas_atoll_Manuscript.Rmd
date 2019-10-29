@@ -1,24 +1,28 @@
 ---
-title: |  
-    | Sea Warming transforms tropical reef food web   
-author: |
-  Leonardo Capitani ^[Corresponding author: leonardocapitani@icloud.com] $^1$, Ronaldo Angelini $^2$, Julio Neves de Araujo $^3$, Guilherme Ortigara Longo $^4$  
-  $^1$Department of Ecology, Universidade Federal do Rio Grande do Norte, Natal, RN 59098-970, Brazil, $^2$Department of Civil Engineering, Universidade Federal do Rio Grande do Norte, Natal, RN, 59078-970, Brazil, $^3$Department of Ecology and Natural Resources,Universidade Federal do Espirito Santo,  Vitória, Espírito Santo 29075-910, Brazil, $^4$Department of Oceanography and Limnology,Universidade Federal do Rio Grande do Norte, Natal, RN, 59014-002, Brazil<br><br>
-
+title: "Sea Warming transforms tropical reef food web"   
+authors:
+ - name: Leonardo Capitani
+   affiliation: Department of Ecology, Universidade Federal do Rio Grande do Norte
+   address: Natal, RN 59098-970, Brazil
+   email:  leonardocapitani@icloud.com
+ - name: Ronaldo Angelini
+   affiliation: Department of Civil Engineering, Universidade Federal do Rio Grande do Norte
+   address: Natal, RN, 59078-970, Brazil
+   email: ronangelini@gmail.com
+keywords:
+- key
+- dictionary
+- word 
 abstract: |
-  This is the abstract.
-  
-output: 
-  pdf_document:
-    latex_engine: xelatex
-    number_sections: yes
-fig_caption: FALSE
+  The text of your abstract.  150 -- 250 words.
+output:
+pdf_caption: default
+fig_caption: yes
 fontsize: 12pt
 mainfont: Times New Roman
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
 ```
 
 ```{r load packages, message=FALSE,warning=FALSE, echo=FALSE}
@@ -33,6 +37,9 @@ library(tidyverse)
 library(tibble)
 library(pillar)
 library(extrafont)
+library(knitcitations); cleanbib()
+cite_options(citation_format = "pandoc", check.entries=FALSE)
+library(bibtex)
 ```
 
 \newpage
