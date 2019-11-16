@@ -26,31 +26,41 @@ c1$scenario = factor(c1$scenario,
                                   "RCP 4.5","RCP 8.5"))
 c1$factor =factor(c1$factor)
 
-labels<- c()
 
 #### Plot####
-p <-  ggplot(c1, aes(x = trophic_group, y = rel.contribution, fill = trophic_group)) +   # Fill column
-   geom_bar(stat = "identity", width = .75) +   # draw the bars
-   coord_flip() +  # Flip axes
+p <-  ggplot(c1, aes(x = trophic_group, y = rel.contribution2, fill = trophic_group)) +   # Fill column
+   geom_bar(stat = "identity", width = 1) +   # draw the bars
+   
+   geom_text(aes(y = -0.5, label = ifelse(rel.contribution2 < 0,'', paste0(rel.contribution2*2, "%"))),
+             position = position_dodge(1), size = 4) +# Draw labels
    facet_wrap(~ scenario, scales = "free") +
-   theme_void() +
+   coord_flip() + 
    theme(text = element_text(family = "Times New Roman"),
-         strip.text.x = element_text(size = 12, color = "black", face = "bold"),
-         strip.background = element_rect(fill="white"),
+         panel.spacing = unit(0.2, "lines"), 
+         strip.text.x = element_text(size = 12, color = "black", 
+                                     face = "bold", hjust = 0.1),
+         strip.background = element_rect(fill = "white"),
          #axis.line = element_line(colour = "black"), 
          legend.title = element_text(color = "black", size = 12, face = "bold"),
          legend.text = element_text(size = 12, face = "plain"),
          legend.position = "bottom",
+         legend.box.margin = margin(t = 15),
          # plot.title = element_text(hjust= 0.5, vjust=2, size = 10 ,face = "bold"),
-         legend.key.size = unit(0.95,"line"))+
-   scale_fill_manual(values = c("Reef sharks"="seashell3",
-                                "Generalist predators"="chocolate3",
-                                "Invertivores"="darkgoldenrod1",
-                                "Herbivores/Detritivores"="darkolivegreen3"),
+         legend.key.size = unit(0.95,"lines"),
+         axis.text.y =element_blank(),
+         axis.text.x =element_blank(),
+         axis.title.y =element_blank(),
+         axis.title.x =element_blank(),
+         axis.ticks.x = element_blank(),
+         axis.ticks.y = element_blank()) +
+   scale_fill_manual(values = c("Reef sharks" = "seashell3",
+                                "Generalist predators" = "chocolate3",
+                                "Invertivores" = "darkgoldenrod1",
+                                "Herbivores/Detritivores" = "darkolivegreen3"),
                      name = "Trophic guilds:")
 
 p
 
 ##### Saving figure######
-ggsave(p, file = "outputs_results/figures/relative_trophic_guild_biomass_contribution_2100.png", units = "mm",
-       width= 233, dpi = 400)
+ggsave(p, file = "outputs_results/figures/pyramid_biomass_contribution_2100.png", units = "mm",
+       width = 233, dpi = 400)

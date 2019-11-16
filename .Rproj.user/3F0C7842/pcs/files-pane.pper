@@ -2,12 +2,12 @@
     "path" : "~/Dropbox/Atoll_Rocas_project/outputs_results/figures",
     "sortOrder" : [
         {
-            "ascending" : false,
-            "columnIndex" : 4
-        },
-        {
             "ascending" : true,
             "columnIndex" : 2
+        },
+        {
+            "ascending" : false,
+            "columnIndex" : 4
         }
     ]
 }
