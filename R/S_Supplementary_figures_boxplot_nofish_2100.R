@@ -5,7 +5,7 @@ library(dplyr)
 library(tidyverse)
 #####Read data######
 #read data from "processed" folder, scenario 2100 and for NO fish species 
-d <- read_csv("data/processed/processed_data_figure_box-plot_year_2100_nofish.csv")
+d <- read_csv("data/processed/processed_data_figure_box-plot_year_2100_nofish.csv", col_types = cols())
 #declare and re-order factor of variables species and scenario
 d$species <- factor(d$species,
                     levels = c("Sea birds","Turtles","Cephalopoda","Panulirus spp.",
@@ -30,7 +30,7 @@ median_statusquo$species <- factor(median_statusquo$species,
             "Panulirus spp.","Benthic macroinvertebrates","Benthic microinvertebrates",
             "Siderastrea stellata","Zooplankton",
             "Phytoplankton","Digenea simplex","Other algal turf"))
-##### boxplot for the 2100 year and NOfish species ####
+#####Plot boxplot for the 2100 year and NOfish species ####
 
 p <- ggplot(d, aes(x = scenario, y = biomass, fill = scenario, facets = species)) + 
    geom_boxplot(aes(x = as.factor(scenario), y = as.numeric(biomass), fill = scenario),
@@ -42,22 +42,25 @@ p <- ggplot(d, aes(x = scenario, y = biomass, fill = scenario, facets = species)
    theme_bw() + 
    labs(x = "Scenarios", y = expression(Biomass~""~(g~m^{-2}))) +
    theme(text = element_text(family = "Times New Roman"),
-         legend.position = "none",
-         strip.text.x = element_text(size = 10, color = "black", face = "bold.italic"),
-         axis.text.x = element_text(size = 10,  color = "black"),
-         axis.title.x = element_text(size = 15),
-         axis.text.y  = element_text(size = 11,  color = "black"),
-         axis.title.y = element_text(size = 15),
+         legend.position = "top",
+         legend.title = element_text(color = "black", size = 18, face = "bold"),
+         legend.text = element_text(size = 16, face = "plain"),
+         legend.key.size = unit(1.5,"line"),
+         strip.text.x = element_text(size = 16, color = "black", face = "bold"),
+         axis.text.x = element_text(size = 14,  color = "black"),
+         axis.title.x = element_text(size = 18),
+         axis.text.y  = element_text(size = 14,  color = "black"),
+         axis.title.y = element_text(size = 20),
          panel.border = element_blank(),
          panel.background = element_blank(),
          panel.grid.major = element_blank(), 
          panel.grid.minor = element_blank(),
          axis.line = element_line(colour = "black")) +
-   scale_fill_brewer(palette = "RdBu", direction = -1)
+   scale_fill_brewer(palette = "RdBu", direction = -1, name = "Scenarios:")
 
-
-#Before to run the code below, remember to run the function contained in the script "function_modify_facet_scale" 
-p +
+p
+#Before to run the code below, remember to run the function contained in the script "F_modify_facet_scale" 
+p <- p +
    facet_wrap_custom(~species, scales = "free_y", ncol = 4,nrow = 4, scale_overrides = list(
       scale_override(1, scale_y_continuous(limits  = c(0, 0.050), breaks = seq(0,.05,0.01))),
       
@@ -68,9 +71,12 @@ p +
       scale_override(7, scale_y_continuous(limits  = c(0, 0.95), breaks = seq(0,.95,.15))),
       scale_override(8, scale_y_continuous(limits  = c(0.1, 0.9), breaks = seq(0.1,.9,.2))),
       scale_override(9, scale_y_continuous(limits  = c(0.025, 0.15), breaks = seq(0.025,.15,0.025))),
-      scale_override(10, scale_y_continuous(limits  = c(75, 250), breaks = seq(25,250,25)))
+      scale_override(10, scale_y_continuous(limits  = c(75, 250), breaks = seq(25,250,25))),
+      scale_override(11, scale_y_continuous(limits  = c(400, 900), breaks = seq(400,900,100)))
       
    ))
 p
+
+#### Saving figure ####
 ggsave(filename = "boxplot_NOfish_2100.png", plot = p, path = "outputs_results/supp/",
        width = 18, device = "png", height = 13, units = 'in', dpi = 400)

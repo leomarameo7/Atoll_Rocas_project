@@ -23,7 +23,8 @@ d$scenario <- factor(d$scenario,
       levels = c("Status quo", "RCP 2.6", "RCP 4.5", "RCP 8.5"))
 
 #####Data frame with median values for each fish species ######
-#Made data-frame with median of the Status quo scenario 
+#Made data-frame with median of the Status quo scenario
+d <- d[,-3]
 median_statusquo <- d %>%
    filter(scenario == "Status quo") %>%
    group_by(scenario,year, species) %>%
@@ -47,29 +48,32 @@ p <- ggplot(d, aes(x = scenario, y = biomass, fill = scenario, facets = species)
    theme_bw() + 
    labs(x = "Scenarios", y = expression(Biomass~""~(g~m^{-2}))) +
    theme(text = element_text(family = "Times New Roman"),
-         legend.position = "none",
-         strip.text.x = element_text(size = 10, color = "black", face = "bold.italic"),
-         axis.text.x = element_text(size = 10,  color = "black"),
-         axis.title.x = element_text(size = 15),
-         axis.text.y  = element_text(size = 11,  color = "black"),
-         axis.title.y = element_text(size = 15),
+         legend.position = "top",
+         legend.title = element_text(color = "black", size = 20, face = "bold"),
+         legend.text = element_text(size = 18, face = "plain"),
+         legend.key.size = unit(1.5,"line"),
+         strip.text.x = element_text(size = 16, color = "black", face = "bold.italic"),
+         axis.text.x = element_text(size = 14,  color = "black"),
+         axis.title.x = element_text(size = 18),
+         axis.text.y  = element_text(size = 16,  color = "black"),
+         axis.title.y = element_text(size = 20),
          panel.border = element_blank(),
          panel.background = element_blank(),
          panel.grid.major = element_blank(), 
          panel.grid.minor = element_blank(),
          axis.line = element_line(colour = "black")) +
-   scale_fill_brewer(palette = "RdBu", direction = -1)
+   scale_fill_brewer(palette = "RdBu", direction = -1, name = "Scenarios:")
+p
 
 #Before to run the code below, remember to run the function contained in the script "function_modify_facet_scale" 
 p <- p +
    facet_wrap_custom(~species, scales = "free_y", ncol = 4,nrow = 4, scale_overrides = list(
       scale_override(1, scale_y_continuous(limits  = c(0, 0.60), breaks = seq(0,.60,0.15))),
-      scale_override(2, scale_y_continuous(limits  = c(0, 12), breaks = seq(0,12,1))),
+      scale_override(2, scale_y_continuous(limits  = c(1, 3.5))),
       scale_override(3, scale_y_continuous(limits  = c(0, 2.05), breaks = seq(0,2.05,0.5))),
       scale_override(4, scale_y_continuous(limits  = c(0, 0.75), breaks = seq(0,0.75,0.25))),
       scale_override(7, scale_y_continuous(limits  = c(0, 0.8), breaks = seq(0,0.8,0.2))),
       scale_override(9, scale_y_continuous(limits  = c(0, 1.5), breaks = seq(0,1.5,.25))),
-      scale_override(2, scale_y_continuous(limits  = c(1, 3.5))),
       scale_override(13, scale_y_continuous(limits  = c(0, 2.5), breaks = seq(0,2.5,.5))),
       scale_override(15, scale_y_continuous(limits  = c(0, 1.75), breaks = seq(0,1.75,.5)))
       

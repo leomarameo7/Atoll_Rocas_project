@@ -2,8 +2,6 @@
 ######Load packages#######
 library(readr)
 library(ggplot2)
-library(dplyr)
-library(plotly)
 library(tidyverse)
 library(tibble)
 ##### Load data for plotting####
@@ -34,10 +32,10 @@ p <- ggplot(data= b) + aes(x = year.group) +
    #y= expression(Biomass~""~(g~m^{-2}))
    theme(text = element_text(family = "Times New Roman"),
          aspect.ratio = .75,
-         axis.text.x = element_text(face = "plain", color = "black", size = 14, angle = 0),
-         axis.text.y = element_text(face = "plain", color = "black",size = 14, angle = 0),
-         axis.title.y = element_text(face = "plain", color = "black",size = 16),
-         axis.title.x = element_text(face = "plain", color = "black",size = 16),
+         axis.text.x = element_text(face = "plain", color = "black", size = 10, angle = 0),
+         axis.text.y = element_text(face = "plain", color = "black",size = 11, angle = 0),
+         axis.title.y = element_text(face = "plain", color = "black",size = 14),
+         axis.title.x = element_text(face = "plain", color = "black",size = 14),
          panel.background = element_blank(),
          panel.grid.major = element_blank(),
          panel.grid.minor = element_blank(),
@@ -49,6 +47,7 @@ p <- ggplot(data= b) + aes(x = year.group) +
    scale_x_continuous(breaks = c(2012,2020,2030,2040,2050,2060,2070,2080,2090,2100)) +
    scale_y_continuous(position = "left", limits = c(0,34), breaks = seq(0,35,5))
 p
+
 #### Saving Figure 2 ######
 ggsave(filename = "Fig.2_total_fish_biomass_dynamic.png", plot = p, 
           path = "outputs_results/figures/", width = 9, 

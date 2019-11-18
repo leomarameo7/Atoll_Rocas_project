@@ -10,13 +10,6 @@ b <- as.data.frame(read_csv("data/raw/raw_montecarlo_trials_mean_percentils.csv"
 glimpse(b)
 str(b)
 summary(b)
-#  Basic checks --------------------------------------------------------------
-nrow(b)             # How many rows
-str(b)              # Variables classes
-attributes(b)       # Attributres
-head(b)             # First rows
-any(duplicated(b))  # There is any duplicated rows?
-any(is.na(b))       # There are NAs in the data?
 ######Rename Scenarios#####
 b$scenario <- replace(b$scenario, b$scenario == "baseline", "Status quo")
 b$scenario <- replace(b$scenario, b$scenario == "RCP2", "RCP 2.6")
@@ -64,18 +57,16 @@ b_herbi$trophic_group <- "Herbivores/Detritivores"
 b_trophic_guilds <- bind_rows(b_sharks,b_gen_pred,b_invert,b_herbi)
 
 ### Modify "b_trophic_guilds" objet to obtain the relative contribution (%) #######
-# of each trophic group by the year 2100 for each scenario ####
-c1 <- b_trophic_guilds %>% filter(year.group == "2100")
+# of each trophic group by the years 2012 and 2100 for each scenario ####
+c1 <- b_trophic_guilds[b_trophic_guilds$year.group %in% c("2012","2100"), ]
 #Drop column 4 and column 5 
-c1 <- c1[,-c(1,4,5)]
-# Summarise per scenario and trophic group
-c2 <- c1 %>% group_by(scenario,trophic_group) %>% 
-   summarise_all(funs(sum))
+c1 <- c1[,-c(4,5)]
 ## calculate the relative contribution (%) of each trophic_group by scenario
-c3 <- c2 %>%
-   group_by(scenario, trophic_group) %>%
-   summarise(tbmean) %>%
-   mutate(rel.contribution = paste0(round(100 * tbmean/sum(tbmean), 1)))
+c3 <- c1 %>%
+   group_by(year.group, scenario,trophic_group) %>% 
+   summarize(sum_var1 = sum(tbmean)) %>%
+   group_by(year.group, scenario) %>%
+   mutate(rel.contribution = paste0(round(100 * sum_var1/sum(sum_var1), 1)))
 
 #Save processed data -----------------------------------------------------
 write.csv(x = b2, 
@@ -89,5 +80,4 @@ write.csv(x = b_trophic_guilds,
 write.csv(x = c3, 
           file = "data/processed/processed_data_figure_relative_contribution_trophic_guilds.csv", 
           row.names = FALSE)
-
 
