@@ -73,5 +73,5 @@ p <- p +
 
 #### Saving figure#####
 
-ggsave(filename = "boxplot_fish_2050", plot = p, path = "outputs_results/figures/",
+ggsave(filename = "boxplot_fish_2050.png", plot = p, path = "outputs_results/figures/",
        width = 18, device = "png", height = 13, units = 'in', dpi = 400)

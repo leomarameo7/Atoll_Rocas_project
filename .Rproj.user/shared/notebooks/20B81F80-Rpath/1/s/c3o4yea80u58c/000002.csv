@@ -1,5 +1,0 @@
-"0","knitr::opts_chunk$set("
-"0","  comment = '#>',"
-"0","  collapse = T)"
-"0","library(Rpath); "
-"0","library(data.table)"

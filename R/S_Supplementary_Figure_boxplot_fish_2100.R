@@ -65,6 +65,7 @@ p <- ggplot(d, aes(x = scenario, y = biomass, fill = scenario, facets = species)
    scale_fill_brewer(palette = "RdBu", direction = -1, name = "Scenarios:")
 p
 
+
 #Before to run the code below, remember to run the function contained in the script "function_modify_facet_scale" 
 p <- p +
    facet_wrap_custom(~species, scales = "free_y", ncol = 4,nrow = 4, scale_overrides = list(
@@ -79,6 +80,7 @@ p <- p +
       
    ))
 p
+
 #### Saving Figure 3####
 ggsave(filename = "boxplot_fish_2100.png", plot = p, path = "outputs_results/supp/",
-       width = 18, device = "png", height = 13, units = 'in', dpi = 400)
+        width = 18, device = "png", height = 13, units = 'in', dpi = 400)

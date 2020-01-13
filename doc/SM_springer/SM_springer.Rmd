@@ -1,0 +1,29 @@
+---
+title: Ocean warming may alters pristine reef ecosystem structure
+authorrunning: Short form of author list if too long for running head
+authors:
+- name: Leonardo Capitani 1
+  address: Department of Ecology, Federal University of Rio Grande do Norte, Natal, 59078-970,Brazil
+  email: leonardocapitani@icloud.com
+
+- name: Ronaldo Angelini 2
+  address: Department of Civil Engineering, Federal University of Rio Grande do Norte, Natal,59078-970, Brazil
+  email: ronangelini@gmail.com
+ 
+- name: Julio Neves de Araujo 3
+  address: Departament of Ecology and Natural Resources, Federal University of Espirito Santo, Vitória, Espírito Santo, 29075-910, Brazil
+  email: julioaneves@hotmail.com
+
+- name: Guilherme Ortigara Longo 4
+  address: Department of Oceanography and Limnology, Federal University of Rio Grande do Norte,Natal, RN, 59014-002, Brazil
+  email: guilherme.o.longo@gmail.com
+  
+MSC:
+- MSC code 1
+- MSC code 2
+
+bibliography: bibliography.bib
+output: rticles::springer_article
+---
+
+

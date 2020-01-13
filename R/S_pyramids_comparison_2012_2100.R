@@ -30,7 +30,6 @@ c1$factor =factor(c1$factor)
 #### Plot####
 p <-  ggplot(c1, aes(x = trophic_group, y = rel.contribution2, fill = trophic_group)) +   # Fill column
    geom_bar(stat = "identity", width = 1) +   # draw the bars
-   
    geom_text(aes(y = -0.5, label = ifelse(rel.contribution2 < 0,'', paste0(rel.contribution2*2, "%"))),
              position = position_dodge(1), size = 5) +# Draw labels
    facet_grid(year.group ~ scenario, scales = "free") +

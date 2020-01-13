@@ -18,6 +18,9 @@ b$scenario <- replace(b$scenario, b$scenario == "RCP8", "RCP 8.5")
 ####Subset only fish species#####
 b1 <- subset(b,species %in% c("X2","X3","X4","X5","X6",
                              "X7","X8","X9","X10","X11","X12","X13","X14","X15","X16","X17"))
+####Subset only nofish species#####
+nofish <- subset(b,species %in% c("X1","X18","X19","X20","X21",
+                              "X22","X23","X24","X25","X26","X27"))
 
 ##### Sum total fish biomass , per year and scenario #####
 b2 <- b1 %>% 
@@ -69,6 +72,14 @@ c3 <- c1 %>%
    mutate(rel.contribution = paste0(round(100 * sum_var1/sum(sum_var1), 1)))
 
 #Save processed data -----------------------------------------------------
+write.csv(x = b1, 
+          file = "data/processed/processed_data_figure_fish_species__biomass_dynamics.csv", 
+          row.names = FALSE)
+
+write.csv(x = nofish, 
+          file = "data/processed/processed_data_figure_NO_fish_species__biomass_dynamics.csv", 
+          row.names = FALSE)
+
 write.csv(x = b2, 
           file = "data/processed/processed_data_figure_2.csv", 
           row.names = FALSE)
