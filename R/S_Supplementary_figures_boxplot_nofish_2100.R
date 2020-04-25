@@ -41,16 +41,16 @@ p <- ggplot(d, aes(x = scenario, y = biomass, fill = scenario, facets = species)
               colour = "red", lty = "longdash", lwd = 0.35) +
    theme_bw() + 
    labs(x = "Scenarios", y = expression(Biomass~""~(g~m^{-2}))) +
-   theme(text = element_text(family = "Times New Roman"),
+   theme(text = element_text(family = "Helvetica"),
          legend.position = "top",
          legend.title = element_text(color = "black", size = 18, face = "bold"),
          legend.text = element_text(size = 16, face = "plain"),
          legend.key.size = unit(1.5,"line"),
-         strip.text.x = element_text(size = 16, color = "black", face = "bold"),
-         axis.text.x = element_text(size = 14,  color = "black"),
-         axis.title.x = element_text(size = 18),
-         axis.text.y  = element_text(size = 14,  color = "black"),
-         axis.title.y = element_text(size = 20),
+         strip.text.x = element_text(size = 10, color = "black", face = "bold"),
+         axis.text.x = element_text(size = 10,  color = "black"),
+         axis.title.x = element_text(size = 11),
+         axis.text.y  = element_text(size = 10,  color = "black"),
+         axis.title.y = element_text(size = 11),
          panel.border = element_blank(),
          panel.background = element_blank(),
          panel.grid.major = element_blank(), 
@@ -64,7 +64,7 @@ p <- p +
    facet_wrap_custom(~species, scales = "free_y", ncol = 4,nrow = 4, scale_overrides = list(
       scale_override(1, scale_y_continuous(limits  = c(0, 0.050), breaks = seq(0,.05,0.01))),
       
-      scale_override(4, scale_y_continuous(limits  = c(0, 7.5), breaks = seq(0,0.75,1.5))),
+      scale_override(4, scale_y_continuous(limits  = c(0, 7.5), breaks = seq(0,7.5,1.5))),
       scale_override(5, scale_y_continuous(limits  = c(0, 25), breaks = seq(0,25,5))),
       scale_override(6, scale_y_continuous(limits  = c(0, 35), breaks = seq(0,35,5))),
       
@@ -78,5 +78,5 @@ p <- p +
 p
 
 #### Saving figure ####
-ggsave(filename = "boxplot_NOfish_2100.png", plot = p, path = "outputs_results/supp/",
+ggsave(filename = "boxplot_NOfish_2100.png", plot = p, path = "outputs_results/supplementary_materials/",
        width = 18, device = "png", height = 13, units = 'in', dpi = 400)
