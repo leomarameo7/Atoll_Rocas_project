@@ -1,15 +1,15 @@
 **** Title: Ocean warming degrades the food web in tropical reef ecosystems ****
  1. Authors: 
  - Leonardo Capitani [Corresponding author: leonardocapitani@icloud.com],
-       Affiliation: Post-Graduate Program in Ecology, Bioscience Institute, Federal University of Rio Grande do Norte, Natal, 59072-970, Brazil
- - Ronaldo Angelini
-       Affiliation: Department of Civil Engineering, Universidade Federal do Rio Grande do Norte, Natal, RN, 59078-970, Brazil
+       - Affiliation: Post-Graduate Program in Ecology, Bioscience Institute, Federal University of Rio Grande do Norte, Natal, 59072-970, Brazil
+ - Ronaldo Angelini,
+      - Affiliation: Department of Civil Engineering, Universidade Federal do Rio Grande do Norte, Natal, RN, 59078-970, Brazil
  - Julio Neves de Araujo
-       Affiliation: Department of Ecology and Natural Resources, Universidade Federal do Espirito Santo,  Vitória, Espírito Santo 29075-910, Brazil
+       - Affiliation: Department of Ecology and Natural Resources, Universidade Federal do Espirito Santo,  Vitória, Espírito Santo 29075-910, Brazil
  -  Edson Vieira Filho
-      Affiliation: Post-Graduate Program in Ecology, Bioscience Institute, Federal University of Rio Grande do Norte, Natal, 59072-970, Brazil
+     - Affiliation: Post-Graduate Program in Ecology, Bioscience Institute, Federal University of Rio Grande do Norte, Natal, 59072-970, Brazil
  - Guilherme Ortigara Longo 
-      Affiliation: Department of Oceanography and Limnology,Universidade Federal do Rio Grande do Norte, Natal, RN, 59014-002, Brazil
+     - Affiliation: Department of Oceanography and Limnology,Universidade Federal do Rio Grande do Norte, Natal, RN, 59014-002, Brazil
 
 2. Brief description of the project: 
 
