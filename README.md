@@ -1,4 +1,5 @@
 **** Title: Ocean warming degrades the food web in tropical reef ecosystems ****
+
  1. Authors: 
  - Leonardo Capitani [Corresponding author: leonardocapitani@icloud.com]
       - Affiliation: Post-Graduate Program in Ecology, Bioscience Institute, Federal University of Rio Grande do Norte, Natal, 59072-970, Brazil
@@ -11,33 +12,35 @@
  - Guilherme Ortigara Longo 
      - Affiliation: Department of Oceanography and Limnology,Universidade Federal do Rio Grande do Norte, Natal, RN, 59014-002, Brazil
 
-2. Brief description of the project: 
+2. Brief description of the project research: 
 
 This research project aims to analyze the reef food web of the Rocas Atoll (Southwestern Atlantic Ocean, Brazil) through mathematical modelling approach. Specifically, the research aim to estimates mean annual biomass, production, and consumption for biological components of Rocas Atoll’s ecosystem. Moreover, we aim to explore the potential future effects of sea warming on reef fish species, analyzing their popupaltion's dynamics along time (2012-2100). 
 
-3. Notes: how to use ? Retriewed from https://kdestasio.github.io/post/r_best_practices/
+3. Notes: how to use ? 
+Retriewed from https://kdestasio.github.io/post/r_best_practices/
 
 Structure of the project as follow: 
 Atoll_Rocas_project/ (It is the top-level folder and contains all of the folders                         and files associated with that project.)
-|--- R (in this folder, you can find R scripts used to clean, manipulate, do and           show along the entire research)
+
+|--- R (in this folder, you can find R scripts used to clean, manipulate, do and show along the entire research)
 
 |--- data (folder with data used in this project)
      |--- raw (folder with raw data: only read with R, never modify these files)
      |--- processed (folder with data that is processed , clean and manipulated by R                      scripts)
 
 |--- output (folder with all the results genereted by analysis of the data)
-     |---figures (contains any plots or figures created and saved                                     by the R scripts. It should be possible to delete and regenerate                    this folder with the scripts in the project folder.)
+     |---figures (contains any plots or figures created and saved by the R scripts. It should be possible to delete and regenerate this folder with the scripts in the project folder.)
      |--- tables (same as above for  tables)
      |--- supp (folder with supplementary materials)
 |---doc (folder with .PDF and .docx files, genereted by R Markdown framework)
-README.md
+
 
 4. Files meaningful names
 Each file has a short, descriptive name that indicates its purpose. Names  include only letters and numbers with underscores _ to separate words. Files that are part of the same work flow are numbered to indicate the order in which they are to be run. We use letters as as follow: 
 C = stats for CLEAN DATA 
 D = do the statistical analysis 
 S= shos analysis results 
-F= function 
+F= functions 
 raw = states for files that contains raw data
 processed = states for files contains data that were cleaned or manipulated 
 
